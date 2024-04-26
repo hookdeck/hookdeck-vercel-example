@@ -5,7 +5,6 @@ This application demonstrates using the [Hookdeck Vercel Middleware](https://git
 - Create a [Vercel](https://vercel.com?ref=github-hookdeck-vercel) account and a project.
 - Install the [Vercel CLI](https://vercel.com/docs/cli?ref=github-hookdeck-vercel)
 - [Signup for a Hookdeck account](https://dashboard.hookdeck.com/signup?ref=github-hookdeck-vercel)
-- Install the [Hookdeck CLI](https://hookdeck.com/docs/cli?ref=github-hookdeck-vercel)
 
 ### Get the code
 
