@@ -1,26 +1,82 @@
 This application demonstrates using the [Hookdeck Vercel Middleware](https://github.com/hookdeck/hookdeck-vercel) within a [Next.js](https://nextjs.org/) project.
 
-## Get the code
-
-```bash
-npx create-next-app -e https://github.com/hookdeck/hookdeck-vercel-example
-```
-
 ## Getting Started
 
-First, run the development server:
+- Create a [Vercel](https://vercel.com?ref=github-hookdeck-vercel) account and a project.
+- Install the [Vercel CLI](https://vercel.com/docs/cli?ref=github-hookdeck-vercel)
+- [Signup for a Hookdeck account](https://dashboard.hookdeck.com/signup?ref=github-hookdeck-vercel)
+- Install the [Hookdeck CLI](https://hookdeck.com/docs/cli?ref=github-hookdeck-vercel)
+
+### Get the code
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx create-next-app -e https://github.com/hookdeck/hookdeck-vercel-example hookdeck-vercel-example
+cd hookdeck-vercel-example
+npm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Get your Hookdeck up your credentials
+
+Get the Hookdeck API key and Signing Secret from your [project secrets](https://dashboard.hookdeck.com/settings/project/secrets?ref=github-hookdeck-vercel).
+
+Create a `.env.local` with the values:
+
+```
+HOOKDECK_API_KEY={value}
+HOOKDECK_SIGNING_SECRET={value}
+```
+
+## Create your Vercel project
+
+Use the Vercel CLI to set up your Vercel project.
+
+```bash
+vercel
+```
+
+## Set your Vercel environment variables
+
+Add `HOOKDECK_API_KEY` and `HOOKDECK_SIGNING_SECRET` (optional but recommended) as [environment variables](https://vercel.com/docs/projects/environment-variables?ref=github-hookdeck-vercel)
+for your Vercel project.
+
+```bash
+vercel env add production HOOKDECK_API_KEY={value}
+vercel env add production HOOKDECK_SIGNING_SECRET={value}
+```
+
+### Deploy your application
+
+Deploy to the production environment:
+
+```bash
+vercel --prod
+```
+
+### Make an Asynchronous HTTP request
+
+Once the deployment has succeeded, make a request to your middleware endpoint:
+
+```bash
+curl --location 'http://your.vercel.app/api/webhooks' \
+--header 'Content-Type: application/json' \
+--data '{
+    "test": "value"
+}'
+```
+
+### Checkout the logs
+
+The Vercel lots to see the middleware logging:
+
+![Vercel Logs](docs/vercel-logs.png)
+
+The Hookdeck request logs to see the inbound requests:
+
+![Hookdeck requests](docs/hookdeck-requests.png)
+
+The Hookdeck event logs to see the generated events and event deliveries:
+
+![Hookdeck events](docs/hookdeck-events.png)
 
 ## Learn More
 
