@@ -14,34 +14,29 @@ cd hookdeck-vercel-example
 npm i
 ```
 
-### Get your Hookdeck up your credentials
-
-Get the Hookdeck API key and Signing Secret from your [project secrets](https://dashboard.hookdeck.com/settings/project/secrets?ref=github-hookdeck-vercel).
-
-Create a `.env.local` with the values:
-
-```
-HOOKDECK_API_KEY={value}
-HOOKDECK_SIGNING_SECRET={value}
-```
-
 ## Create your Vercel project
 
-Use the Vercel CLI to set up your Vercel project.
+Use the Vercel CLI to set up a Vercel project.
 
 ```bash
-vercel
+vercel link --yes
 ```
 
-## Set your Vercel environment variables
+Remove the `--yes` flag if you want to walk through the interactive options.
+
+## Set your Vercel project environment variables
 
 Add `HOOKDECK_API_KEY` and `HOOKDECK_SIGNING_SECRET` (optional but recommended) as [environment variables](https://vercel.com/docs/projects/environment-variables?ref=github-hookdeck-vercel)
 for your Vercel project.
 
+Get the Hookdeck API key and Signing Secret from your [project secrets](https://dashboard.hookdeck.com/settings/project/secrets?ref=github-hookdeck-vercel).
+
 ```bash
-vercel env add production HOOKDECK_API_KEY={value}
-vercel env add production HOOKDECK_SIGNING_SECRET={value}
+vercel env add HOOKDECK_API_KEY production
+vercel env add HOOKDECK_SIGNING_SECRET production
 ```
+
+The above commands will prompt you for the values.
 
 ### Deploy your application
 
@@ -51,21 +46,33 @@ Deploy to the production environment:
 vercel --prod
 ```
 
+Within the output, you'll see your **Inspect** URL.
+
 ### Make an Asynchronous HTTP request
 
-Once the deployment has succeeded, make a request to your middleware endpoint:
+Click on the inspect URL and get your `{domain}.vercel.app` URL. Use that URL to make a request to your middleware endpoint:
 
 ```bash
-curl --location 'http://your.vercel.app/api/webhooks' \
+curl --location 'https://{domain}}.vercel.app/api/webhooks' \
 --header 'Content-Type: application/json' \
 --data '{
     "test": "value"
 }'
 ```
 
+You will see output similar to the following:
+
+```json
+{
+  "status": "SUCCESS",
+  "message": "Request successfully handled. Request ID: req_nlwiPJSOTRFb6vHYlVez",
+  "request_id": "req_nlwiPJSOTRFb6vHYlVez"
+}
+```
+
 ### Checkout the logs
 
-The Vercel lots to see the middleware logging:
+The Vercel logs to see the middleware logging:
 
 ![Vercel Logs](docs/vercel-logs.png)
 
