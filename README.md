@@ -100,4 +100,6 @@ The Hookdeck event logs to see the generated events and event deliveries:
 
 ## Deploy on Vercel
 
+Fork this repository and click the **Deploy** button.
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhookdeck%2Fhookdeck-vercel-example&env=HOOKDECK_API_KEY,HOOKDECK_SIGNING_SECRET)
