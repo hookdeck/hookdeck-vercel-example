@@ -53,7 +53,11 @@ Within the output, you'll see your **Inspect** URL.
 
 ### Make an Asynchronous HTTP request
 
-Click on the inspect URL and get your `{domain}.vercel.app` URL. Use that URL to make a request to your middleware endpoint:
+Navigate to the *Inspect** URL and get your production `{domain}.vercel.app` URL.
+
+> All other deployment URLs will be protected by default. You can change this in settings if you prefer.
+
+Use that URL to make a request to your middleware endpoint:
 
 ```bash
 curl --location 'https://{domain}}.vercel.app/api/webhooks' \
