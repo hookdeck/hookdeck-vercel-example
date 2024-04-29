@@ -19,10 +19,13 @@ npm i
 Use the Vercel CLI to set up a Vercel project.
 
 ```bash
-vercel link --yes
+vercel link
 ```
 
-Remove the `--yes` flag if you want to walk through the interactive options.
+> Add a `--yes` flag if you want to skip the interactive options.
+> ```bash
+> vercel link --yes
+> ```
 
 ## Set your Vercel project environment variables
 
