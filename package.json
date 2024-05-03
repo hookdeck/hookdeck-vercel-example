@@ -8,10 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prebuild": "node .hookdeck/prebuild.js"
+    "prebuild": "hookdeck-vercel deploy"
   },
   "dependencies": {
-    "@hookdeck/vercel": "^0.1.2",
+    "@hookdeck/vercel": "^0.1.4",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"
