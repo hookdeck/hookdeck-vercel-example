@@ -1,19 +1,29 @@
 "use client";
 
-import { RequestPaginatedResult, Request } from "@hookdeck/sdk/api/types";
+import { Request } from "@hookdeck/sdk/api/types";
 import { useEffect, useState } from "react";
+
+const refreshInterval = process.env.REFRESH_INTERVAL
+  ? Number(process.env.REFRESH_INTERVAL)
+  : 5000;
 
 export default function EventsList() {
   const [events, setevents] = useState<Request[] | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+
+  const fetchEvents = async () => {
+    const response = await fetch("/api/events");
+    const events: Request[] = await response.json();
+    setLastUpdated(new Date());
+    setevents(events);
+  };
 
   useEffect(() => {
-    const fetchevents = async () => {
-      const response = await fetch("/api/events");
-      const events: Request[] = await response.json();
-      setevents(events);
-    };
+    const intervalId = setInterval(fetchEvents, refreshInterval);
 
-    fetchevents();
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   if (events === null) {
@@ -22,9 +32,12 @@ export default function EventsList() {
 
   return (
     <section>
-      <h2 className="mb-3 text-xl font-semibold">
+      <h2 className="text-xl font-semibold">
         Events <span>({events ? events.length : 0})</span>
       </h2>
+      <div className="text-sm mb-2">
+        Last updated: {lastUpdated?.toLocaleTimeString()}
+      </div>
       <ul>
         {events.length === 0 && <li>No events found</li>}
         {events.map((request) => {
