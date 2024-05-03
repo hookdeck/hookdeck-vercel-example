@@ -4,6 +4,8 @@ import Image from "next/image";
 import hookdeckConfig from "../../hookdeck.config";
 
 import { HookdeckClient } from "@hookdeck/sdk";
+import RequestsList from "./components/RequestsList";
+import EventsList from "./components/EventsList";
 
 const hookdeck = new HookdeckClient({
   token: process.env.HOOKDECK_API_KEY!,
@@ -11,8 +13,6 @@ const hookdeck = new HookdeckClient({
 
 export default async function Home() {
   const sources = await hookdeck.source.list();
-  const requests = await hookdeck.request.list();
-  const events = await hookdeck.event.list();
 
   return (
     <main className="flex min-h-screen flex-col content-center items-center justify-between p-24">
@@ -74,42 +74,8 @@ export default async function Home() {
         </section>
       </div>
       <div className="grid lg:w-full lg:max-w-5xl lg:grid-cols-2 space-x-4 mb-10">
-        <section>
-          <h2 className="mb-3 text-xl font-semibold">
-            Requests <span>({requests.count})</span>
-          </h2>
-          <ul>
-            {requests.models?.length === 0 && <li>No requests found</li>}
-            {requests.models?.map((request) => {
-              return (
-                <li
-                  key={request.id}
-                  className="text-wrap whitespace-pre-wrap overflow-hidden mb-4"
-                >
-                  <code>{JSON.stringify(request, null, 2)}</code>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-        <section>
-          <h2 className="mb-3 text-xl font-semibold">
-            Events <span>({events.count})</span>
-          </h2>
-          <ul>
-            {events.models?.length === 0 && <li>No events found</li>}
-            {events.models?.map((event) => {
-              return (
-                <li
-                  key={event.id}
-                  className="text-wrap whitespace-pre-wrap overflow-hidden mb-4"
-                >
-                  <code>{JSON.stringify(event, null, 2)}</code>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+        <RequestsList />
+        <EventsList />
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
