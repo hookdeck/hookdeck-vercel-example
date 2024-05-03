@@ -5,7 +5,12 @@ const hookdeck = new HookdeckClient({
 });
 
 export async function GET() {
-  const events = await hookdeck.event.list();
+  try {
+    const events = await hookdeck.event.list();
 
-  return Response.json(events.models);
+    return Response.json(events.models);
+  } catch (error) {
+    console.error("Error fetching events", error);
+    return Response.error();
+  }
 }

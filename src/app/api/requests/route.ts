@@ -5,7 +5,12 @@ const hookdeck = new HookdeckClient({
 });
 
 export async function GET() {
-  const requests = await hookdeck.request.list();
+  try {
+    const requests = await hookdeck.request.list();
 
-  return Response.json(requests.models);
+    return Response.json(requests.models);
+  } catch (error) {
+    console.error("Error fetching requests", error);
+    return Response.error();
+  }
 }
