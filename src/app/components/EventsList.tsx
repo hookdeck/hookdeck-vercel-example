@@ -12,7 +12,7 @@ export default function EventsList() {
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   const fetchEvents = async () => {
-    const response = await fetch("/api/events", { cache: "no-store" });
+    const response = await fetch("/api/events");
     const events: Request[] = await response.json();
     setLastUpdated(new Date());
     setevents(events);
