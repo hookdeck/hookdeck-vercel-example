@@ -12,7 +12,7 @@ export default function RequestsList() {
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   const fetchRequests = async () => {
-    const response = await fetch("/api/requests");
+    const response = await fetch("/api/requests", { cache: "no-store" });
     const requests: Request[] = await response.json();
     setLastUpdated(new Date());
     setRequests(requests);
