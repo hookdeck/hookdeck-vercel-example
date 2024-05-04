@@ -1,6 +1,7 @@
 import { HookdeckClient } from "@hookdeck/sdk";
 
-export const fetchCache = "force-no-store";
+export const fetchCache = "force-dynamic";
+export const revalidate = 0;
 
 const hookdeck = new HookdeckClient({
   token: process.env.HOOKDECK_API_KEY!,
