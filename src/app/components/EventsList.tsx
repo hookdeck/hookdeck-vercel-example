@@ -44,7 +44,7 @@ export default function EventsList() {
           return (
             <li
               key={request.id}
-              className="text-wrap whitespace-pre-wrap overflow-hidden mb-4"
+              className="text-wrap whitespace-pre-wrap overflow-hidden mb-4 bg-slate-900"
             >
               <code>{JSON.stringify(request, null, 2)}</code>
             </li>

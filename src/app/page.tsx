@@ -15,12 +15,12 @@ export default async function Home() {
   const sources = await hookdeck.source.list();
 
   return (
-    <main className="flex min-h-screen flex-col content-center items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl flex flex-col lg:flex-row mb-14 space-x-4 justify-center space-y-4 lg:space-y-0">
+    <main className="flex min-h-screen flex-col content-center items-center justify-between p-6 lg:p-24">
+      <div className="z-10 w-full max-w-5xl flex flex-col lg:flex-row mt-8 lg:mt-0 mb-14 lg:space-x-4 justify-center space-y-4 lg:space-y-0 items-center">
         <Image
           src="/hookdeck.svg"
           alt="Hookdeck Logo"
-          className="dark:invert"
+          className="dark:invert m-0"
           width={187}
           height={30}
           priority
@@ -28,15 +28,15 @@ export default async function Home() {
         <Image
           src="/vercel.svg"
           alt="Vercel Logo"
-          className="dark:invert"
+          className="dark:invert m-0"
           width={150}
           height={30}
           priority
         />
-        <div className="text-3xl">Middleware</div>
+        <div className="text-3xl m-0">Middleware</div>
       </div>
 
-      <div className="grid lg:w-full lg:max-w-5xl lg:grid-cols-2 space-x-4 mb-10">
+      <div className="grid lg:w-full lg:max-w-5xl grid-cols-1 lg:grid-cols-2 space-x-4 sm:space-y-10 lg:space-y-0 mb-10 sm:items-start">
         <section>
           <h2 className="mb-3 text-xl font-semibold">
             Middleware Route Matches{" "}
