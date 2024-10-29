@@ -1,9 +1,8 @@
 {
   "name": "hookdeck-vercel-example",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
-    "predev": "npm run prebuild",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -11,8 +10,8 @@
     "prebuild": "hookdeck-vercel deploy"
   },
   "dependencies": {
-    "@hookdeck/vercel": "^0.1.4",
-    "next": "14.2.3",
+    "@hookdeck/vercel": "^0.3.0",
+    "next": "^15.0.1",
     "react": "^18",
     "react-dom": "^18"
   },
