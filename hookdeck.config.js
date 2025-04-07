@@ -12,7 +12,7 @@ const {
 
 /** @type {import("@hookdeck/vercel").HookdeckConfig} */
 const hookdeckConfig = {
-  vercel_url: process.env.BASE_URL || process.env.VERCEL_URL,
+  vercel_url: process.env.BASE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL,
   match: {
     "/api/webhooks": {
       retry: {
