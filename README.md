@@ -23,6 +23,7 @@ vercel link
 ```
 
 > Add a `--yes` flag if you want to skip the interactive options.
+>
 > ```bash
 > vercel link --yes
 > ```
@@ -36,6 +37,9 @@ Get the Hookdeck API key and Signing Secret from your [project secrets](https://
 
 ```bash
 vercel env add HOOKDECK_API_KEY production
+```
+
+```bash
 vercel env add HOOKDECK_SIGNING_SECRET production
 ```
 
@@ -53,7 +57,7 @@ Within the output, you'll see your **Inspect** URL.
 
 ### Make an Asynchronous HTTP request
 
-Navigate to the *Inspect** URL and get your production `{domain}.vercel.app` URL.
+Navigate to the \*Inspect\*\* URL and get your production `{domain}.vercel.app` URL.
 
 > All other deployment URLs will be protected by default. You can change this in settings if you prefer.
 
